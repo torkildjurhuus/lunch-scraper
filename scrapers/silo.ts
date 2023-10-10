@@ -34,6 +34,7 @@ export const scrapeSiloMenu = async (): Promise<string | null> => {
 
                 if (menuContent) {
                     matskra = menuContent;
+
                     return false;
                 }
             }
