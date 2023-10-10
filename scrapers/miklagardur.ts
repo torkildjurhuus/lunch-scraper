@@ -1,7 +1,7 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-export const miklaScrape = async (): Promise<string | null> => {
+export const scrapeMiklagardurMenu = async (): Promise<string | null> => {
     const maxRetries = 5;
     let retries = 0;
 
