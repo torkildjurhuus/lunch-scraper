@@ -23,6 +23,7 @@ export const scrapeSiloMenu = async (): Promise<string | null> => {
             return "Ongin matskrá í vikuskiftinum";
         }
 
+
         let matskra: string | null = null;
 
         $('.flex_cell').each((index, weekElement) => {
