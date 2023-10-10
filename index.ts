@@ -1,7 +1,7 @@
-import { miklaScrape } from './scrapers/miklagardur';
+import { scrapeMenu } from './scrapers/silo';
 
 async function main() {
-    const foodTitles = await miklaScrape();
+    const foodTitles = await scrapeMenu();
     console.log(foodTitles);
 }
 
