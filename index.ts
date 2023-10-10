@@ -1,7 +1,7 @@
-import { scrapeMenu } from './scrapers/silo';
+import { scrapeSiloMenu } from './scrapers/silo';
 
 async function main() {
-    const foodTitles = await scrapeMenu();
+    const foodTitles = await scrapeSiloMenu();
     console.log(foodTitles);
 }
 

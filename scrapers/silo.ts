@@ -11,7 +11,7 @@ Date.prototype.getWeek = function(): number {
     return Math.ceil((((date.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
 };
 
-export const scrapeMenu = async (): Promise<string | null> => {
+export const scrapeSiloMenu = async (): Promise<string | null> => {
     try {
         const { data } = await axios.get('https://silo.fo/matskra/');
         const $ = cheerio.load(data);
@@ -24,7 +24,7 @@ export const scrapeMenu = async (): Promise<string | null> => {
         }
 
 
-        let targetContent: string | null = null;
+        let matskra: string | null = null;
 
         $('.flex_cell').each((index, weekElement) => {
             const weekTitle = $(weekElement).find('h3.ItemTitle b').text().trim();
@@ -33,13 +33,14 @@ export const scrapeMenu = async (): Promise<string | null> => {
                 const menuContent = $(weekElement).find(`#cphContent_rGroups_rItems_0_lTitleAddtional_${dayOfWeek}`).text().trim();
 
                 if (menuContent) {
-                    targetContent = menuContent;
+                    matskra = menuContent;
+
                     return false;
                 }
             }
         });
 
-        return targetContent;
+        return matskra;
 
     } catch (error) {
         console.error(`Error occurred: ${error}`);
