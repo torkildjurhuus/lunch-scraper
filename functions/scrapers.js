@@ -4,7 +4,6 @@ import { scrapeFkMenu } from '../scrapers/fk';
 
 exports.handler = async (event) => {
     try {
-        // Check which scraper to run from the event body or query parameters
         let scraperType = event.queryStringParameters.scraper;
 
         let result;
