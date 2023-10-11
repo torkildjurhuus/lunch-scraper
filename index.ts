@@ -7,6 +7,12 @@ async function main() {
     console.log('Silo: ',silo);
     const miklagardur = await scrapeMiklagardurMenu();
     console.log('Miklagarður: ',miklagardur);
-    const fk = await scrapeFkMenu();
-    console.log('FK: ',fk);
+    (async () => {
+    const menu = await scrapeFkMenu();
+    if (menu) {
+        console.log("FK:", menu);
+    }
+    })();
+
 }
+main().catch((error) => console.error(`An error occurred: ${error}`));
