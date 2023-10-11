@@ -10,5 +10,3 @@ async function main() {
     const fk = await scrapeFkMenu();
     console.log('FK: ',fk);
 }
-
-main().catch((error) => console.error(`An error occurred: ${error}`));
