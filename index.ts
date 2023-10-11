@@ -1,32 +1,14 @@
-import { App } from '@slack/web-api';
-import {scrapeSiloMenu} from "./scrapers/silo";
-import {scrapeFkMenu} from "./scrapers/fk";
+import { scrapeSiloMenu } from './scrapers/silo';
 import {scrapeMiklagardurMenu} from "./scrapers/miklagardur";
+import {scrapeFkMenu} from "./scrapers/fk";
 
-const slackToken = 'your-slack-token-here'; // replace with your actual Slack bot token
+async function main() {
+    const silo = await scrapeSiloMenu();
+    console.log('Silo: ',silo);
+    const miklagardur = await scrapeMiklagardurMenu();
+    console.log('Miklagarður: ',miklagardur);
+    const fk = await scrapeFkMenu();
+    console.log('FK: ',fk);
+}
 
-const app = new App({
-    token: slackToken,
-});
-
-const runScrapers = async () => {
-    try {
-        const [imageTextResult, website1Result, website2Result] = await Promise.all([
-            scrapeSiloMenu(),
-            scrapeFkMenu(),
-            scrapeMiklagardurMenu(),
-        ]);
-
-        const finalMessage = [imageTextResult, website1Result, website2Result].join('\n\n');
-
-        // Post to Slack
-        await app.chat.postMessage({
-            channel: 'channel-id', // replace with your Slack channel id
-            text: finalMessage,
-        });
-    } catch (error) {
-        console.error(error);
-    }
-};
-
-runScrapers();
+main().catch((error) => console.error(`An error occurred: ${error}`));
