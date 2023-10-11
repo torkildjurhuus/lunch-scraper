@@ -5,7 +5,6 @@ export const scrapeFkMenu = async (): Promise<string | null> => {
     const API_KEY = process.env.GOOGLE_CLOUD_VISION_API_KEY;
 
     try {
-        // Step 1: Fetch the FK main page for the image URL
         const response = await axios.get('https://www.fk.fo/matskrain-i-hoyvik/');
         const $ = cheerio.load(response.data);
         const imageUrl = $('#st-container > div.st-pusher > div > div > div > div.container.content-page > div > div > div.content.col-md-9 > section > div.vc_row.wpb_row.vc_row-fluid > div > div > div > div.wpb_single_image.wpb_content_element.vc_align_left img').attr('src');
