@@ -18,4 +18,4 @@ This project is a web scraper designed to scrape lunch menus from places around 
 3. **FK Menu Scraper**: Utilizing OCR to read FK's menu, which is posted to their website as a .png each week
 
 ### Upcoming Features
-**Glasir Menu Scraper**
+**Glasir Menu**
